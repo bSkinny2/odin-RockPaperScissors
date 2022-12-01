@@ -47,4 +47,4 @@ function game() {
 }
 
 game();
-console.log("Score:\n you: "+userScore+", computer:"+computerScore)
+alert("Score:\n you: "+userScore+", computer:"+computerScore)
