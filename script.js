@@ -2,10 +2,17 @@ const choiceSet = ["rock", "paper", "scissors"];
 let userScore;
 let computerScore;
 
-function playRound (computer, user) {
+const results = document.querySelector('.containerResults');
+
+const buttons = document.querySelectorAll('.choice');
+const result = document.createElement('div');
+results.appendChild(result)
+
+function playRound (user) {
+    let computer = choiceSet[Math.floor(Math.random() * 3)];
     let result;
     if (computer == user) {
-        result = "draw"
+        result = "Draw"
     } else if (user == "rock" && computer == "scissors") {
         userScore = userScore + 1;
         result = "You win!"
@@ -28,6 +35,23 @@ function playRound (computer, user) {
     return result
 }
 
+
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        result.textContent = playRound(e.target.id);
+    })
+});
+
+
+
+
+
+
+
+
+
+/*
 function game() {
     userScore = 0;
     computerScore = 0;
@@ -47,4 +71,6 @@ function game() {
 }
 
 game();
+
 alert("Score:\n you: "+userScore+", computer:"+computerScore)
+*/
