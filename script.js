@@ -52,7 +52,7 @@ buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         const computer = choiceSet[Math.floor(Math.random()*3)]
         result.textContent = resolveRound(e.target.id, computer);
-        score.textContent = "player score: " + userScore + ", computer score: " + computerScore;
+        score.textContent = `player score: ${userScore} computer score: ${computerScore}`;
         console.log(userScore, computerScore)
         if (computerScore == 5) {
             console.log ("Computer wins");
