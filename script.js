@@ -10,38 +10,48 @@ results.appendChild(result)
 
 const score = document.querySelector('.containerScore')
 
-function playRound (user) {
-    let computer = choiceSet[Math.floor(Math.random() * 3)];
-    let result;
-    if (computer == user) {
-        result = "Draw"
-    } else if (user == "rock" && computer == "scissors") {
-        userScore += 1;
-        result = "You win!"
-    } else if (user == "rock" && computer == "paper") {
-        computerScore += 1;
-        result = "You loose! :("
-    } else if (user == "paper" && computer == "scissors") {
-        computerScore += 1;
-        result = "You loose! :("
-    } else if (user == "paper" && computer == "rock") {
-        userScore += 1;
-        result = "You win!"
-    } else if (user == "scissors" && computer == "rock") {
-        computerScore += 1;
-        result = "You loose! :("
-    } else if (user == "scissors" && computer == "paper") {
-        userScore += 1;
-        result = "You win!"
+function resolveRound (player, computer) {
+    if (computer == player) {
+        return "Draw"
     }
-    return result
+    if (player == "rock") {
+        if (computer == "paper") {
+            computerScore++
+            return "You loose!"
+            
+        } if (computer == "scissors") {
+            computerScore++
+            return "You win!"
+        }
+    }
+    if (player == "paper") {
+        if (computer == "rock") {
+            userScore++
+            return "You win!"
+        }
+        if (computer == "scissors") {
+            computerScore++
+            return "You loose!"
+        }
+    }
+    if (player == "scissors") {
+        if (computer == "rock") {
+            computerScore++
+            return "You loose!"
+        }
+        if (computer == "paper") {
+            userScore++
+            return "You win!"
+        }
+    }      
 }
 
 
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        result.textContent = playRound(e.target.id);
+        const computer = choiceSet[Math.floor(Math.random()*3)]
+        result.textContent = resolveRound(e.target.id, computer);
         score.textContent = "player score: " + userScore + ", computer score: " + computerScore;
         console.log(userScore, computerScore)
         if (computerScore == 5) {
