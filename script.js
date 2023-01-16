@@ -1,14 +1,17 @@
 const choiceSet = ["rock", "paper", "scissors"];
 let userScore = 0;
 let computerScore = 0;
+let maxScore = 5
 
 const results = document.querySelector('.containerResults');
 
 const buttons = document.querySelectorAll('.choice');
 const result = document.createElement('div');
+const score = document.querySelector('.containerScore');
+
 results.appendChild(result)
 
-const score = document.querySelector('.containerScore')
+
 
 function resolveRound (player, computer) {
     if (computer == player) {
@@ -20,7 +23,7 @@ function resolveRound (player, computer) {
             return "You loose!"
             
         } if (computer == "scissors") {
-            computerScore++
+            userScore++
             return "You win!"
         }
     }
@@ -46,56 +49,36 @@ function resolveRound (player, computer) {
     }      
 }
 
+function newGame () {
+    computerScore = 0;
+    userScore = 0;
+    result.textContent ="";
+    score.textContent = "";
+}
+
+function printWinner () {
+    if (computerScore == 5) {
+        return "Computer wins";
+    } if (userScore == 5) {
+        return "Human wins";
+    }
+
+}
 
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         const computer = choiceSet[Math.floor(Math.random()*3)]
         result.textContent = resolveRound(e.target.id, computer);
-        score.textContent = `player score: ${userScore} computer score: ${computerScore}`;
+        score.textContent = `player: ${userScore} computer: ${computerScore}`;
         console.log(userScore, computerScore)
-        if (computerScore == 5) {
-            console.log ("Computer wins");
-            computerScore = 0;
-            userScore = 0;
-        } else if (userScore == 5) {
-            console.log("Human wins");
-            computerScore = 0;
-            userScore = 0;
-        } else console.log ("play again")
+        if (computerScore == maxScore || userScore == maxScore) {
+            alert(printWinner());
+                newGame ();
+            
+        }
 
+       
 
     })
 });
-
-
-
-
-
-
-
-
-
-/*
-function game() {
-    userScore = 0;
-    computerScore = 0;
-
-    for (let i = 0; i< 5; i++) {
-
-    //get user's choice
-    let userChoice = prompt("Rock, paper or scissors?").toLowerCase();
-    //userChoice = userChoice.toLowerCase();
-
-    //get computer choice
-    let computerChoice = choiceSet[Math.floor(Math.random() * 3)];
-    let result = playRound(computerChoice, userChoice);
-
-    alert(result)
-    }
-}
-
-game();
-
-alert("Score:\n you: "+userScore+", computer:"+computerScore)
-*/
