@@ -8,8 +8,12 @@ const results = document.querySelector('.containerResults');
 const buttons = document.querySelectorAll('.choice');
 const result = document.createElement('div');
 const score = document.querySelector('.containerScore');
+const finalResult = document.querySelector ('.finalResult');
+const resultText = document.createElement ('div');
+const gameDesk = document.querySelector('.gameDesk');
 
-results.appendChild(result)
+results.appendChild(result);
+finalResult.appendChild(resultText);
 
 
 
@@ -54,6 +58,10 @@ function newGame () {
     userScore = 0;
     result.textContent ="";
     score.textContent = "";
+    resultText.textContent = "";
+    finalResult.setAttribute('style', 'display: none')
+    gameDesk.setAttribute('style', 'display: block')
+
 }
 
 function printWinner () {
@@ -73,8 +81,10 @@ buttons.forEach((button) => {
         score.textContent = `player: ${userScore} computer: ${computerScore}`;
         console.log(userScore, computerScore)
         if (computerScore == maxScore || userScore == maxScore) {
-            alert(printWinner());
-                newGame ();
+            gameDesk.setAttribute('style', "display: none");
+            finalResult.setAttribute('style', 'display: block');
+            resultText.textContent = (printWinner());
+            
             
         }
 
