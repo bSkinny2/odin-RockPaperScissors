@@ -6,14 +6,14 @@ let maxScore = 5
 const results = document.querySelector('.containerResults');
 
 const buttons = document.querySelectorAll('.choice');
+const repeatButton = document.querySelector('.repeatButton')
 const result = document.createElement('div');
 const score = document.querySelector('.containerScore');
 const finalResult = document.querySelector ('.finalResult');
-const resultText = document.createElement ('div');
+const resultText = document.querySelector ('.resultText')
 const gameDesk = document.querySelector('.gameDesk');
 
 results.appendChild(result);
-finalResult.appendChild(resultText);
 
 
 
@@ -66,9 +66,9 @@ function newGame () {
 
 function printWinner () {
     if (computerScore == 5) {
-        return "Computer wins";
+        return "COMPUTER WINS!";
     } if (userScore == 5) {
-        return "Human wins";
+        return "YOU WIN!";
     }
 
 }
@@ -83,12 +83,12 @@ buttons.forEach((button) => {
         if (computerScore == maxScore || userScore == maxScore) {
             gameDesk.setAttribute('style', "display: none");
             finalResult.setAttribute('style', 'display: block');
-            resultText.textContent = (printWinner());
-            
-            
+            resultText.textContent = (printWinner());   
         }
-
-       
-
     })
 });
+
+repeatButton.addEventListener('click',(e) => {
+    newGame();
+}
+)

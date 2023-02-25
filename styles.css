@@ -3,3 +3,11 @@ body {
     color: antiquewhite;
     text-align: center;
 }
+
+.finalResult {
+    display: none;
+}
+
+.repeatButton {
+    margin-top: 20px;
+}
