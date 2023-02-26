@@ -1,6 +1,6 @@
 body {
     background-color: #000000;
-    color: antiquewhite;
+    color: #faf88e;
     text-align: center;
 }
 
@@ -10,4 +10,61 @@ body {
 
 .repeatButton {
     margin-top: 20px;
+}
+
+button.choice {
+    width: 190px;
+    height: 190px;
+    margin: 20px;
+}
+
+button.choice:hover {
+    border: 2px dashed #69D2E7 ;
+}
+
+#rock {
+    background-image: url("/img/rock.jpg");
+}
+
+#paper {
+    background-image: url('/img/paper.jpg');
+}
+
+#scissors {
+    background-image: url('/img/scissors.jpg');
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 2em;
+    margin: 20px;
+    padding: 20px;
+    
+ 
+    
+    outline: 10px dashed #E0E4CC;
+    box-shadow: 0 0 0 10px #69D2E7;
+    animation: 1s animateBorderOne ease infinite;
+  }
+  
+  @keyframes animateBorderOne {
+    to {
+      outline-color: #69D2E7;
+      box-shadow: 0 0 0 10px #E0E4CC;
+    }
+  }
+
+  .containerChoices {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+.gameDesk {
+    display: flex;
+    flex-direction: column;
 }

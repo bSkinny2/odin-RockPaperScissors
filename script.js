@@ -60,7 +60,7 @@ function newGame () {
     score.textContent = "";
     resultText.textContent = "";
     finalResult.setAttribute('style', 'display: none')
-    gameDesk.setAttribute('style', 'display: block')
+    gameDesk.setAttribute('style', 'display: flex')
 
 }
 
